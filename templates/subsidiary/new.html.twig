@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Subsidiary{% endblock %}
+
+{% block body %}
+    <h1>Create new Subsidiary</h1>
+
+    {{ include('subsidiary/_form.html.twig') }}
+
+    <a href="{{ path('subsidiary_index') }}">back to list</a>
+{% endblock %}

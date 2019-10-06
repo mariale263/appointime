@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subsidiary index{% endblock %}
+
+{% block body %}
+    <h1>Subsidiary index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subsidiary in subsidiaries %}
+            <tr>
+                <td>{{ subsidiary.id }}</td>
+                <td>{{ subsidiary.name }}</td>
+                <td>{{ subsidiary.address }}</td>
+                <td>
+                    <a href="{{ path('subsidiary_show', {'id': subsidiary.id}) }}">show</a>
+                    <a href="{{ path('subsidiary_edit', {'id': subsidiary.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('subsidiary_new') }}">Create new</a>
+{% endblock %}

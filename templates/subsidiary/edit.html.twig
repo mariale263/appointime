@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Subsidiary{% endblock %}
+
+{% block body %}
+    <h1>Edit Subsidiary</h1>
+
+    {{ include('subsidiary/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('subsidiary_index') }}">back to list</a>
+
+    {{ include('subsidiary/_delete_form.html.twig') }}
+{% endblock %}
