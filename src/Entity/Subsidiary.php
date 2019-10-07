@@ -39,9 +39,15 @@ class Subsidiary
      */
     private $subsidiaryPhones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Employee", mappedBy="subsidiary", orphanRemoval=true)
+     */
+    private $employees;
+
     public function __construct()
     {
         $this->subsidiaryPhones = new ArrayCollection();
+        $this->employees = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +116,37 @@ class Subsidiary
             // set the owning side to null (unless already changed)
             if ($subsidiaryPhone->getSubsidiary() === $this) {
                 $subsidiaryPhone->setSubsidiary(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Employee[]
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employee $employee): self
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees[] = $employee;
+            $employee->setSubsidiary($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employee $employee): self
+    {
+        if ($this->employees->contains($employee)) {
+            $this->employees->removeElement($employee);
+            // set the owning side to null (unless already changed)
+            if ($employee->getSubsidiary() === $this) {
+                $employee->setSubsidiary(null);
             }
         }
 
