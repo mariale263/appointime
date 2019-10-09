@@ -5,35 +5,42 @@
 {% block body %}
 <h1>Service index</h1>
 
-    <table class="table table-dark">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Duración</th>
-                <th>Descripción</th>
-                <th>Imagen</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for service in servicies %}
-            <tr>
-                <td>{{ service.id }}</td>
-                <td>{{ service.name }}</td>
-                <td>{{ service.description }}</td>
-                <td>{{ service.image }}</td>
-                <td>
-                    <a href="{{ path('service_show', {'id': service.id}) }}">show</a>
-                    <a href="{{ path('subsidiary_edit', {'id': service.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="card bg-light mb-3">
+    <div class="card-header">
+        <div class="row text-center">
+            <div class="col-1">Id</div>
+            <div class="col">Name</div>
+            <div class="col">Duración</div>
+            <div class="col">Descripción</div>
+            <div class="col">Imagen</div>
+            <div class="col-2">Accion</div>
+        </div>
+    </div>
+      
+    {% for service in servicies %}
 
-    <a href="{{ path('service_new') }}">Create new</a>
+    <div class="row card-body">
+        <div class="col-1 text-center">{{ service.id }}</div>
+        <div class="col">{{ service.name }}</div>
+        <div class="col-1 text-center">{{ service.duration }}</div>
+        <div class="col">{{ service.description }}</div>
+        <div class="col">{{ service.image }}</div>
+        <div class="col-1 text-center">
+            <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ver</a>
+        </div>
+        <div class="col-1 text-center">
+            <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Editar</a>
+        </div>
+    </div>
+
+    {% else %}
+        <div class="row">
+            <div class="col">no records found</div>
+        </div>
+    {% endfor %}
+   
+</div>
+<a href="{{ path('service_new') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Agregar nuevo</a>
+
+    
 {% endblock %}
