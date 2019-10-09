@@ -2,11 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('build/cms-app.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {# {{ include('./cms/_header.html.twig') }} #}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}
+            <script src="{{ asset('build/runtime.js') }}"></script>
+            <script src="{{ asset('build/cms-app.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
