@@ -1,0 +1,20 @@
+// Base
+@import "variables";
+@import "general";
+@import "header";
+@import "footer";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// Fortawesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Service
+@import "service";
+
+// Subsidiary
+@import "subsidiary";

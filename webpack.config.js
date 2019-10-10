@@ -27,6 +27,8 @@ Encore
      // CMS
     .addEntry('cms-app', './assets/cms/js/app.js')
 
+    //.addStyleEntry('css-app', './assets/cms/css/app.scss')
+
 
     // WEB
     //.addEntry('web-app', './assets/web/js/app.js')

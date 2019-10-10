@@ -1,7 +1,36 @@
-{{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.duration) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.image) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="needs-validation" novalidate>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-6">
+            {{ form_errors(form.name) }}
+            <div class="row">
+                <div class="col-2">{{ form_label(form.name) }}</div>
+                <div class="col-10">{{ form_widget(form.name, {'label': false}) }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            {{ form_row(form.duration) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            {{ form_row(form.description) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            {{ form_row(form.image) }}
+        </div>
+    </div>     
+    
+    <button class="btn btn-secondary btn-lg active col-md-6">{{ button_label|default('Guardar') }}</button>
+    {{ form_end(form) }}
+</div>
+    
+
+

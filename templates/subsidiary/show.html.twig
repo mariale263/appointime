@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('subsidiary_index') }}">back to list</a>
+    <a href="{{ path('subsidiary_index') }}" class"btn btn-secondary"></a>
 
-    <a href="{{ path('subsidiary_edit', {'id': subsidiary.id}) }}">edit</a>
+    <a href="{{ path('subsidiary_edit', {'id': subsidiary.id}) }}">Editar</a>
 
     {{ include('subsidiary/_delete_form.html.twig') }}
 {% endblock %}
