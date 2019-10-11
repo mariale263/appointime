@@ -34,11 +34,12 @@ $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
 console.log("a vetest");
+
+
 // Sidebar
+
 $(document).ready(function () {
-    console.log("a ver si entra aqui primero");
     $('#sidebarCollapse').on('click', function () {
-        console.log("lo que sea");
         $('#sidebar').toggleClass('active');
     });
 });
