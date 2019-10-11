@@ -8,6 +8,11 @@
 // any CSS you require will output into a single css file (app.css in this case)
 import bootstrap from 'bootstrap';
 import '../css/app.scss';
+import './test.js';
+
+
+// create global $ and jQuery variables
+global.$ = global.jQuery = $;
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
@@ -15,6 +20,8 @@ const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
+
+//require('popper.js');
 
 // or you can include specific pieces
 // require('bootstrap/js/dist/tooltip');
@@ -25,4 +32,13 @@ require('@fortawesome/fontawesome-free/js/all.js');
 
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
+});
+console.log("a vetest");
+// Sidebar
+$(document).ready(function () {
+    console.log("a ver si entra aqui primero");
+    $('#sidebarCollapse').on('click', function () {
+        console.log("lo que sea");
+        $('#sidebar').toggleClass('active');
+    });
 });

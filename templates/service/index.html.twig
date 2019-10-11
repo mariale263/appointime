@@ -3,44 +3,45 @@
 {% block title %}Hello ServiceController!{% endblock %}
 
 {% block body %}
-<h1>Service index</h1>
+<div class="container">
+    <h1>Service index</h1>
+        <div class="bg-white mb-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-1">Id</div>
+                    <div class="col">Name</div>
+                    <div class="col">Duración</div>
+                    <div class="col">Descripción</div>
+                    <div class="col">Imagen</div>
+                    <div class="col-2">Accion</div>
+                </div>
+            </div>
+            
+            {% for service in servicies %}
 
-<div class="card bg-light mb-3">
-    <div class="card-header">
-        <div class="row text-center">
-            <div class="col-1">Id</div>
-            <div class="col">Name</div>
-            <div class="col">Duración</div>
-            <div class="col">Descripción</div>
-            <div class="col">Imagen</div>
-            <div class="col-2">Accion</div>
-        </div>
-    </div>
-      
-    {% for service in servicies %}
+            <div class="row card-body">
+                <div class="col-1">{{ service.id }}</div>
+                <div class="col">{{ service.name }}</div>
+                <div class="col">{{ service.duration }}</div>
+                <div class="col">{{ service.description }}</div>
+                <div class="col">{{ service.image }}</div>
+                <div class="col-1">
+                    <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-secundary btn-lg far fa-eye"></a>
+                </div>
+                <div class="col-1">
+                    <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-light btn-lg far fa-edit"></a>
+                </div>
+            </div>
 
-    <div class="row card-body">
-        <div class="col-1 text-center">{{ service.id }}</div>
-        <div class="col">{{ service.name }}</div>
-        <div class="col-1 text-center">{{ service.duration }}</div>
-        <div class="col">{{ service.description }}</div>
-        <div class="col">{{ service.image }}</div>
-        <div class="col-1 text-center">
-            <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Ver</a>
+            {% else %}
+                <div class="row">
+                    <div class="col">no records found</div>
+                </div>
+            {% endfor %}
+        
         </div>
-        <div class="col-1 text-center">
-            <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Editar</a>
-        </div>
-    </div>
-
-    {% else %}
-        <div class="row">
-            <div class="col">no records found</div>
-        </div>
-    {% endfor %}
-   
+        <a href="{{ path('service_new') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Agregar nuevo</a>
 </div>
-<a href="{{ path('service_new') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Agregar nuevo</a>
 
     
 {% endblock %}

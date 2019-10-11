@@ -2,7 +2,9 @@
 @import "variables";
 @import "general";
 @import "header";
+@import "sidebar";
 @import "footer";
+@import "mediaqueries";
 
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
@@ -12,6 +14,8 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+
 
 // Service
 @import "service";

@@ -8,14 +8,16 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {{ include('./_header.html.twig') }} 
+    <div class="wrapper">        
+        {{ include('./_sidebar.html.twig') }} 
+        <div id="content">{{ include('./_header.html.twig') }} 
         
-        <div class="container">
-            {% block body %}{% endblock %}
-        </div>
+        {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="{{ asset('build/runtime.js') }}"></script>
             <script src="{{ asset('build/cms-app.js') }}"></script>
         {% endblock %}
+        </div>
+    </div>
     </body>
 </html>
