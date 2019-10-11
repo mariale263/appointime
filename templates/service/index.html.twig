@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>Service index</h1>
+    <h1 class="paddBottom">Service index</h1>
         <div class="bg-white mb-3">
             <div class="card-header">
                 <div class="row">
@@ -29,7 +29,7 @@
                     <a href="{{ path('service_show', {'id': service.id}) }}" class="btn btn-secundary btn-lg far fa-eye"></a>
                 </div>
                 <div class="col-1">
-                    <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-light btn-lg far fa-edit"></a>
+                    <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-lg far fa-edit"></a>
                 </div>
             </div>
 
@@ -40,8 +40,9 @@
             {% endfor %}
         
         </div>
-        <a href="{{ path('service_new') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Agregar nuevo</a>
-</div>
+        <div>
+            <a href="{{ path('service_new') }}" class="btn btn-light btn-lg disable" role="button" aria-pressed="true"><i class="far fa-plus-square"></i> Agregar</a>
+        </div>
+</div>    
 
-    
 {% endblock %}
