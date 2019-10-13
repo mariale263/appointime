@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Entity\Service;
 use App\Form\ServiceType;
+use App\Manager\ServiceManager;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ServiceController extends AbstractController
 {
+
+    /**
+    * @param ServiceManager $serviceManager
+    */
+    public function __construct(ServiceManager $serviceManager)
+    {
+        $this->serviceManager = $serviceManager;
+    }
+
     /**
      * @Route("/", name="service_index", methods={"GET"})
      */
@@ -34,15 +44,23 @@ class ServiceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($service);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('service_index');
+            if(!$this->serviceManager->new($service)) {
+                $this->addFlash(
+                    'error',
+                    'Error al guardar nuevo servicio'
+                );
+            } else {
+                $this->addFlash(
+                    'success',
+                    'Se ha guardado nuevo servicio'
+                );
+
+                return $this->redirectToRoute('service_index');
+            }
         }
 
         return $this->render('service/new.html.twig', [
-            'service' => $service,
             'form' => $form->createView(),
         ]);
     }
@@ -66,9 +84,20 @@ class ServiceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            if(!$this->serviceManager->update($service)) {
+                $this->addFlash(
+                    'error',
+                    'Error al editar nuevo servicio'
+                );
+            } else {
+                $this->addFlash(
+                    'success',
+                    'Se ha actualizado nuevo servicio'
+                );
 
-            return $this->redirectToRoute('service_index');
+                return $this->redirectToRoute('service_index');
+            }
+           
         }
 
         return $this->render('service/edit.html.twig', [
@@ -82,12 +111,17 @@ class ServiceController extends AbstractController
      */
     public function delete(Request $request, Service $service): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$service->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($service);
-            $entityManager->flush();
+        if(!$this->serviceManager->delete($service)) {
+            $this->addFlash(
+                'error',
+                'Error al eliminar servicio'
+            );
+        } else {
+            $this->addFlash(
+                'success',
+                'Se ha eliminado el servicio'
+            );
         }
-
         return $this->redirectToRoute('service_index');
     }
 }

@@ -105,9 +105,17 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
+    font-size: 0.9em;
+    padding-left: 30px;
+    background: #6d7fcc !important;
+}
+
+a,
+a:hover,
+a:focus {
+    color: #fafafa !important;
+    text-decoration: none !important;
+    transition: all 0.3s;
 }
 
 ul.CTAs {
@@ -116,7 +124,7 @@ ul.CTAs {
 
 ul.CTAs a {
     text-align: center;
-    font-size: 0.9em !important;
+    font-size: 0.9em;
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
@@ -129,6 +137,6 @@ a.download {
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+    background: #6d7fcc;
+    color: #fff;
 }
